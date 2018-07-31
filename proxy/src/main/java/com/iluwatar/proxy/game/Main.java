@@ -15,7 +15,9 @@ public class Main {
 
         System.err.println("start at " + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
 
-        IGamePlayer proxy = (IGamePlayer) Proxy.newProxyInstance(gamePlayer.getClass().getClassLoader(), new Class[]{IGamePlayer.class}, handler);
+//        IGamePlayer proxy = (IGamePlayer) Proxy.newProxyInstance(gamePlayer.getClass().getClassLoader(), new Class[]{IGamePlayer.class}, handler);
+//        DynamicProxy<IGamePlayer> dynamicProxy = new DynamicProxy<IGamePlayer>();
+        IGamePlayer proxy = DynamicProxy.newProxyInstance(GamePlayer.class.getClassLoader(), new Class[]{IGamePlayer.class}, handler);
 
         proxy.login();
 
